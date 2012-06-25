@@ -11,6 +11,9 @@ public class OptionKeys
    //valid values: AS5, AS7, STANDALONE
    //default STANDALONE
    public static final String OPTION_TARGETS = "target.hornetq";
+
+   //target hornetq version
+   public static final String OPTION_TARGET_VERSION = "target.hornetq.version";
    
    //comma separated tasks
    //valid values: SERVER, DESTINATION, FACTORY, MESSAGE, BRIDGE, ALL

@@ -23,7 +23,7 @@ import org.hornetq.util.config.ConfigSet;
  * 
  * General Input:
  * 
- * JBOSS HOME, server profiles to migrate, target types AS7, AS5 or Standalone, tasks
+ * JBOSS HOME, server profiles to migrate, target types AS7, AS5, AS4 or Standalone, target versions, tasks
  * 
  * Tasks needed:
  * 
@@ -145,6 +145,13 @@ public class JBMToHornetQUtil
       String[] taskNames = taskValue.split(",");
       
       addTasks(taskNames);
+      
+      //target version
+      this.targetVersion = props.getProperty(OptionKeys.OPTION_TARGET_VERSION);
+      if (targetVersion == null)
+      {
+         throw new Exception("Target hornetq version not specified.");
+      }
 
       //workplace
       String workplaceValue = props.getProperty(OptionKeys.OPTION_WORKPLACE);
@@ -414,11 +421,8 @@ public class JBMToHornetQUtil
       System.out.println("Usage: ");
       System.out.println("java " + JBMToHornetQUtil.class.getName() + " options");
       System.out.println("where options can be:");
-      System.out.println("-? or -help : get this information");
-      System.out.println("jboss.home and profile points to where your JBM deployment is.");
-      System.out.println("target is one of AS7, AS5 and STANDALONE (if you give null, default to STANDALONE)");
-      System.out.println("tasks can be one or more values from SERVER, DESTINATION, FACTORY, and MESSAGES");
-      System.out.println("if no tasks given it defaults to SERVER");
+      System.out.println("-? or -help : get this information, or");
+      System.out.println("<property file location> (default is default.properties)");
    }
 
    // workplace/migration-data/<profile_name>
