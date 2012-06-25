@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="/home/howard/Documents/jms1.1/lib/jms.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.14-bin.jar"/>
+	<classpathentry kind="lib" path="/home/howard/projects/jboss/hornetq/git/hornetq/distribution/hornetq/target/hornetq-2.3.0-SNAPSHOT-bin/lib/netty.jar"/>
+	<classpathentry kind="lib" path="/home/howard/projects/jboss/hornetq/git/hornetq/distribution/hornetq/target/hornetq-2.3.0-SNAPSHOT-bin/lib/jnp-client.jar"/>
+	<classpathentry kind="lib" path="/home/howard/projects/jboss/hornetq/git/hornetq/distribution/hornetq/target/hornetq-2.3.0-SNAPSHOT-bin/lib/hornetq-jms-client.jar"/>
+	<classpathentry kind="lib" path="/home/howard/projects/jboss/hornetq/git/hornetq/distribution/hornetq/target/hornetq-2.3.0-SNAPSHOT-bin/lib/hornetq-core-client.jar"/>
+	<classpathentry kind="lib" path="/home/howard/projects/jboss/hornetq/git/hornetq/distribution/hornetq/target/hornetq-2.3.0-SNAPSHOT-bin/lib/hornetq-core.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
