@@ -1,8 +1,14 @@
-package org.hornetq.util;
+package org.hornetq.util.tasks;
 
 import java.io.File;
 
+import org.hornetq.util.HornetQServerWriter;
+import org.hornetq.util.JBMServerConfigReader;
+import org.hornetq.util.JBMToHornetQUtil;
+import org.hornetq.util.ProfileInfo;
+import org.hornetq.util.XMLServerConfigWriter;
 import org.hornetq.util.config.ConfigSet;
+import org.hornetq.util.targets.MigrationTarget;
 
 public class ServerMigrationTask extends AbstractMigrationTask
 {

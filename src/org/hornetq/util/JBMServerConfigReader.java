@@ -25,75 +25,12 @@ public class JBMServerConfigReader
    {
       ServerConfig config = cfgSet.getServerConfig();
       
-      File deployDir = new File(profile.loc, "deploy");
-      
-      if (!deployDir.exists())
-      {
-         throw new Exception("Directory: " + deployDir + " doesn't exists. Invalid JBoss Home?");
-      }
-      
-      File jbmCfgDir = new File(deployDir, "messaging");
-      
-      if (!jbmCfgDir.exists())
-      {
-         //try AS4
-         jbmCfgDir = new File(deployDir, "jboss-messaging.sar");
-      }
-      
-      if (!jbmCfgDir.exists())
-      {
-         throw new Exception("Cannot find JBM config dir under " + deployDir.getAbsolutePath());
-      }
-      
-      log.info("JBM config dir: " + jbmCfgDir.getAbsolutePath());
-      
-      //now read "messaging-service.xml"
-      File messagingConfigFile = new File(jbmCfgDir, "messaging-service.xml");
-      
-      if (!messagingConfigFile.exists())
-      {
-         throw new Exception("Cannot find server config file: " + messagingConfigFile.getAbsolutePath());
-      }
+      File messagingConfigFile = profile.getMessagingConfigFile();
+
       readServerConfig(messagingConfigFile, config);
       
-      File persistFile = null;
-      File remotingFile = null;
-
-      File[] files = jbmCfgDir.listFiles(new FilenameFilter()
-      {
-         @Override
-         public boolean accept(File dir, String name)
-         {
-            if (name.endsWith(".xml"))
-            {
-               return true;
-            }
-            return false;
-         }
-      });
-      
-      for (File f : files)
-      {
-         if (f.getName().contains("persistence-service"))
-         {
-            log.info("Found persistence config file: " + f.getAbsolutePath());
-            persistFile = f;
-         }
-         else if (f.getName().contains("remoting"))
-         {
-            log.info("Found remoting config file: " + f.getAbsolutePath());
-            remotingFile = f;
-         }
-      }
-      
-      if (persistFile == null)
-      {
-         throw new Exception("Persistence configuration file not found!");
-      }
-      if (remotingFile == null)
-      {
-         throw new Exception("Remoting configuration file not found!");
-      }
+      File persistFile = profile.getPersistenceConfigFile();
+      File remotingFile = profile.getRemotingConfigFile();
       
       //xxx-persistence-service.xml
       readPersistenceConfig(persistFile, config);

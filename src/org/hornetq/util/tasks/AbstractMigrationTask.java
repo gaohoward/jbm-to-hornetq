@@ -1,4 +1,7 @@
-package org.hornetq.util;
+package org.hornetq.util.tasks;
+
+import org.hornetq.util.FakeLogger;
+import org.hornetq.util.JBMToHornetQUtil;
 
 public abstract class AbstractMigrationTask implements MigrationTask
 {

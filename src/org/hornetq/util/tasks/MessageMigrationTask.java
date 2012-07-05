@@ -1,4 +1,7 @@
-package org.hornetq.util;
+package org.hornetq.util.tasks;
+
+import org.hornetq.util.JBMToHornetQUtil;
+import org.hornetq.util.ProfileInfo;
 
 public class MessageMigrationTask extends AbstractMigrationTask
 {

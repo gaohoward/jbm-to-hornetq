@@ -1,4 +1,4 @@
-package org.hornetq.util;
+package org.hornetq.util.targets;
 
 import java.io.File;
 

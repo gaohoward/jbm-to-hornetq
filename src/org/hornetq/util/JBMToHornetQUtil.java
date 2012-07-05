@@ -16,6 +16,16 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import org.hornetq.util.config.ConfigSet;
+import org.hornetq.util.targets.AS5Target;
+import org.hornetq.util.targets.AS7Target;
+import org.hornetq.util.targets.MigrationTarget;
+import org.hornetq.util.targets.StandAloneTarget;
+import org.hornetq.util.tasks.BridgeMigrationTask;
+import org.hornetq.util.tasks.DestinationMigrationTask;
+import org.hornetq.util.tasks.FactoryMigrationTask;
+import org.hornetq.util.tasks.MessageMigrationTask;
+import org.hornetq.util.tasks.MigrationTask;
+import org.hornetq.util.tasks.ServerMigrationTask;
 
 /**
  * 
@@ -89,6 +99,8 @@ public class JBMToHornetQUtil
    
    private Map<String, ConfigSet> cfgSets = new HashMap<String, ConfigSet>();
    
+   private Properties allProperties = null;
+   
    
    public JBMToHornetQUtil(Properties props) throws Exception
    {
@@ -122,7 +134,8 @@ public class JBMToHornetQUtil
       {
          String profilePath = jbHome.getAbsolutePath() + File.separator + "server" + File.separator + p;
          File profileDir = getDir(profilePath);
-         profiles.add(new ProfileInfo(p, profileDir));
+         ProfileInfo profile = new ProfileInfo(p, profileDir, props);
+         profiles.add(profile);
       }
       
       //the targets
@@ -167,6 +180,8 @@ public class JBMToHornetQUtil
       {
          throw new Exception("Workplace: " + workplace + " is already a file, please specify a different one.");
       }
+      
+      this.allProperties = props;
    }
    
    private String readJBMVersion(File jbmClientJar) throws ZipException, IOException
