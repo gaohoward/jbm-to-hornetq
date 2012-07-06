@@ -30,6 +30,31 @@ public class ProfileInfo
    //returning the messaing-service.xml (server peer config)
    public File getMessagingConfigFile() throws Exception
    {
+      File jbmCfgDir = getJbmCfgDir();
+      
+      // now read "messaging-service.xml"
+      String jbmServerPeerFileName = OptionKeys.getOption(OptionKeys.OPTION_SERVERPEER_CONFIG_NAME, overrides, "messaging-service.xml");
+      File messagingConfigFile = new File(jbmCfgDir, jbmServerPeerFileName);
+
+      if (!messagingConfigFile.exists())
+      {
+         throw new Exception("Cannot find server config file: "
+               + messagingConfigFile.getAbsolutePath());
+      }
+      
+      return messagingConfigFile;
+   }
+
+   public File getPersistenceConfigFile() throws Exception
+   {
+      File jbmCfgDir = getJbmCfgDir();
+      String persistenceName = OptionKeys.getOption(OptionKeys.OPTION_PERSISTENCE_CFG_NAME, overrides, null);
+      
+      return null;
+   }
+
+   private File getJbmCfgDir() throws Exception
+   {
       String deployName = OptionKeys.getOption(OptionKeys.OPTION_DEPLOY_NAME, overrides, "deploy");
       File deployDir = new File(loc, deployName);
 
@@ -53,17 +78,6 @@ public class ProfileInfo
          throw new Exception("Cannot find JBM config dir under "
                + deployDir.getAbsolutePath());
       }
-
-      // now read "messaging-service.xml"
-      String jbmServerPeerFileName = OptionKeys.getOption(OptionKeys.OPTION_SERVERPEER_CONFIG_NAME, overrides, "messaging-service.xml");
-      File messagingConfigFile = new File(jbmCfgDir, jbmServerPeerFileName);
-
-      if (!messagingConfigFile.exists())
-      {
-         throw new Exception("Cannot find server config file: "
-               + messagingConfigFile.getAbsolutePath());
-      }
-      
-      return messagingConfigFile;
+      return jbmCfgDir;
    }
 }

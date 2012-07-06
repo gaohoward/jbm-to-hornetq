@@ -30,10 +30,10 @@ public class JBMServerConfigReader
       readServerConfig(messagingConfigFile, config);
       
       File persistFile = profile.getPersistenceConfigFile();
-      File remotingFile = profile.getRemotingConfigFile();
-      
       //xxx-persistence-service.xml
       readPersistenceConfig(persistFile, config);
+
+      File remotingFile = profile.getRemotingConfigFile();
       //remoting-service.xml
       readRemotingConfig(remotingFile, config);
       

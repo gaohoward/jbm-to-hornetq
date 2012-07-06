@@ -1,0 +1,31 @@
+<jbm-to-hornetq>
+   <migration-config>
+      <jbm-deployment jboss-home="/home/howard/tests/jboss43_CP09">
+         <profile name="default" action="act1">
+            <remoting-config path="....."/>
+            <server-config path="..."/>
+            <persistence-config path="..."/>
+            <destinations>
+               <path>..</path>
+               <path>..</path>
+            </destinations>
+            <factories>
+               <path>..</path>
+               <path>..</path>
+            </factories>
+         </profile>
+      </jbm-deployment>
+   </migration-config>
+
+   <actions>
+      <action name="act1">
+         <target type="STANDALONE" version="2.2.14.GA" location="...">
+            <tasks>
+               <task type="SERVER" location="...">
+            </tasks>
+            <param key="jboss.home" value="..."/>
+          </target>
+      </action>
+   </actions>
+</jbm-to-hornetq>
+

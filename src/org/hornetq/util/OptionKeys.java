@@ -34,6 +34,9 @@ public class OptionKeys
    //JBM server configuration file name
    //default: messaging-service.xml
    public static final String OPTION_SERVERPEER_CONFIG_NAME = "jbm.serverpeer.config.name";
+   //JBM persistence name (xxx-persistence-service.xml)
+   //default: null
+   public static final String OPTION_PERSISTENCE_CFG_NAME = "jbm.persistence.config.name";
 
    
    public static String getOption(String optionDeployName, Properties overrides, String defVal)
