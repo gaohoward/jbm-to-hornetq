@@ -1,31 +1,35 @@
 <jbm-to-hornetq>
-   <migration-config>
-      <jbm-deployment jboss-home="/home/howard/tests/jboss43_CP09">
-         <profile name="default" action="act1">
-            <remoting-config path="....."/>
-            <server-config path="..."/>
-            <persistence-config path="..."/>
-            <destinations>
-               <path>..</path>
-               <path>..</path>
-            </destinations>
-            <factories>
-               <path>..</path>
-               <path>..</path>
-            </factories>
-         </profile>
-      </jbm-deployment>
-   </migration-config>
+	<jbm-deployments>
+		<deployment jboss-home="/home/howard/tests/jboss43_CP09">
+			<profile name="default" action="act1">
+				<remoting-config path="....." />
+				<server-config path="..." />
+				<persistence-config path="..." />
+				<destinations-config>
+					<path>..</path>
+					<path>..</path>
+				</destinations-config>
+				<factories-config>
+					<path>..</path>
+					<path>..</path>
+				</factories-config>
+				<bridges-config>
+					<path>..</path>
+					<path>..</path>
+				</bridges-config>
+			</profile>
+		</deployment>
+	</jbm-deployments>
 
-   <actions>
-      <action name="act1">
-         <target type="STANDALONE" version="2.2.14.GA" location="...">
-            <tasks>
-               <task type="SERVER" location="...">
-            </tasks>
-            <param key="jboss.home" value="..."/>
-          </target>
-      </action>
-   </actions>
+	<actions>
+		<action name="act1">
+		    <!-- one or more targets -->
+			<target type="STANDALONE" version="2.2.14.GA" location="...">
+				<tasks>
+					<task type="SERVER" location="..." />
+				</tasks>
+			</target>
+		</action>
+	</actions>
 </jbm-to-hornetq>
 
